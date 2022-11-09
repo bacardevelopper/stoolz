@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors
 import 'package:flutter/material.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
+import 'package:stoolz/common_widgets/widget_button.dart';
 
 class SplashLoad extends StatelessWidget {
   @override
@@ -19,10 +20,7 @@ class SplashLoad extends StatelessWidget {
       children: [
         Padding(
           padding: EdgeInsets.all(0.0),
-          child: Image.asset(
-            'assets/logo.png',
-            scale: 5.1,
-          ),
+          child: logoApp(2.1),
         ),
         Padding(
           padding: EdgeInsets.all(0.0),
