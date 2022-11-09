@@ -1,9 +1,13 @@
-// ignore_for_file: use_key_in_widget_constructors, library_private_types_in_public_api
-
+// ignore_for_file: use_key_in_widget_constructors, library_private_types_in_public_api, must_be_immutable
+import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import 'package:stoolz/pages_views/page_connexion/main_connexion.dart';
 import 'package:stoolz/pages_views/splash_load/main_splash_load.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:stoolz/request/main_request_log.dart';
 
-void main() {
+void main() async {
+  await GetStorage.init();
   runApp(MyApp());
 }
 
@@ -11,14 +15,29 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: SplashLoad(),
+      home: SplashLoadCaller(),
       debugShowCheckedModeBanner: false,
     );
+  }
+}
+
+class _SplashLoadWrapperState extends State<SplashLoadWrapper> {
+  @override
+  void initState() {
+    if (widget.onInit != null) {
+      widget.onInit();
+    }
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return widget.child;
   }
 }
 
@@ -32,27 +51,16 @@ class SplashLoadWrapper extends StatefulWidget {
   _SplashLoadWrapperState createState() => _SplashLoadWrapperState();
 }
 
-class _SplashLoadWrapperState extends State<SplashLoadWrapper> {
-  @override
-  void initState() {
-    if (widget.onInit != null) {
-      widget.child;
-    }
-    super.initState();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return widget.child;
-  }
-}
-
 class SplashLoadCaller extends StatelessWidget {
+  MainRequestLog mainRequestLog = MainRequestLog();
+
   @override
   Widget build(BuildContext context) {
     return SplashLoadWrapper(
       onInit: () {
-        _getThingsOnStartup().then((value) {});
+        _getThingsOnStartup().then((value) {
+          mainRequestLog.authentification();
+        });
       },
       child: SplashLoad(),
     );
