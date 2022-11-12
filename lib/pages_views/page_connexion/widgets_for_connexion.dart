@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_fast_forms/flutter_fast_forms.dart';
-import '../show_notif/notification.dart';
+import 'package:stoolz/pages_views/show_notif/notification.dart';
 
 Widget espacerHeight(double hauteur) {
   return Container(
@@ -72,7 +72,9 @@ InputDecoration designInput() {
 
 Widget btnLogin(double widthArg, BuildContext context) {
   return InkWell(
-    onTap: () {},
+    onTap: () {
+      notificationMsg(context);
+    },
     child: Container(
       height: 60.0,
       width: widthArg,
