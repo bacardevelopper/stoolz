@@ -67,6 +67,6 @@ class SplashLoadCaller extends StatelessWidget {
   }
 
   Future _getThingsOnStartup() async {
-    await Future.delayed(const Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 3));
   }
 }
