@@ -24,13 +24,15 @@ Future getToken() async {
 
 class NavigationSys {
   NavigationSys();
-  dynamic navIn(String path) {
-    switch (path) {
+  void navIn(String pathArg) {
+    switch (pathArg) {
       case 'pageGestion':
-        Get.to(PageGestion());
+        Get.to(() => PageGestion());
         break;
       case 'pageLogin':
-        Get.to(PageConnexion());
+        Get.to(() => PageConnexion());
+        break;
+      default:
         break;
     }
   }

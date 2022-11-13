@@ -23,7 +23,7 @@ class PageConnexion extends StatelessWidget {
               espacerHeight(35.0),
               inputText("email@email.fr", "Email", widthInput),
               espacerHeight(25.0),
-              inputText("xxxxxxxxx", "Mot de passe", widthInput),
+              inputText("xxxxxxxxx", "Password", widthInput),
               espacerHeight(40.0),
               btnLogin(widthInput, context)
             ],

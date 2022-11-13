@@ -22,5 +22,19 @@ class MainRequestLog {
     }
   }
 
-  Future loginRequest() async {}
+  Future loginRequest(String email, String motDePasse) async {
+    try {
+      var reponse = await dio.post(uri_config + uri_step['connexion'],
+          data: {"email": email, "password": motDePasse});
+      List dataLoginSuccess = [
+        reponse.data["user_name"],
+        reponse.data["token"]
+      ];
+      print(reponse.data);
+      navSys.navIn("pageGestion");
+      //return dataLoginSuccess;
+    } catch (e) {
+      print(e);
+    }
+  }
 }

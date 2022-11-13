@@ -1,7 +1,6 @@
 // ignore_for_file: use_key_in_widget_constructors, library_private_types_in_public_api, must_be_immutable
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
-import 'package:stoolz/pages_views/page_connexion/main_connexion.dart';
 import 'package:stoolz/pages_views/splash_load/main_splash_load.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:stoolz/request/main_request_log.dart';
