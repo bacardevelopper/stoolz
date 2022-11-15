@@ -6,6 +6,16 @@ import 'package:stoolz/pages_views/page_gestion_materiels/main_gestion_materiels
 
 List<String> loaderState = ["loading", "loadOk", "loadNotOk"];
 
+void getUserName() async {
+  var userName = box.read("user_name");
+  return userName;
+}
+
+Future writeIdInLocal(String tokenStr, String userName) async {
+  await box.write('user_token', tokenStr);
+  await box.write('user_name', userName);
+}
+
 final box = GetStorage();
 const String uri_config = 'https://app-backend-matos.herokuapp.com/';
 

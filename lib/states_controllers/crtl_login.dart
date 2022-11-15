@@ -7,6 +7,12 @@ var reqLog = new MainRequestLog();
 class LoginCtrl extends GetxController {
   String email = '';
   String password = '';
+  String userName = '';
+
+  getUserName(String userNameArg) {
+    userName = userNameArg;
+    update();
+  }
 
   changeValue(String idValue, String value) {
     if (idValue == "Password") {

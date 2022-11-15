@@ -2,23 +2,28 @@
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
 import 'package:stoolz/common_fonctions/functions_common.dart';
+import 'package:stoolz/states_controllers/crtl_login.dart';
 import 'package:stoolz/states_controllers/ctrl_splash.dart';
 
 var dio = new Dio();
 final loadSplashCtrl = Get.put(LoadSplashCtrls());
+final logCtrl = Get.put(LoginCtrl());
 var navSys = new NavigationSys();
 
 class MainRequestLog {
   MainRequestLog();
 
   Future authentification() async {
-    print("Fonction test");
     var token = await getToken();
     try {
       var reponse = await dio.get(uri_config + uri_step["auth"] + token!);
-      loadSplashCtrl.updateLoad("loadOk");
+      navSys.navIn("pageGestion");
+      print("AFFICHE ----- DATA AUTHENTIFICATION -----");
+      print(reponse.data);
+      //loadSplashCtrl.updateLoad("loadOk");
     } catch (e) {
-      loadSplashCtrl.updateLoad("loadNotOk");
+      navSys.navIn("pageLogin");
+      // loadSplashCtrl.updateLoad("loadNotOk");
     }
   }
 
@@ -30,9 +35,8 @@ class MainRequestLog {
         reponse.data["user_name"],
         reponse.data["token"]
       ];
-      print(reponse.data);
+      writeIdInLocal(dataLoginSuccess[1], dataLoginSuccess[0]);
       navSys.navIn("pageGestion");
-      //return dataLoginSuccess;
     } catch (e) {
       print(e);
     }
