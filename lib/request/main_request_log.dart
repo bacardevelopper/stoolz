@@ -14,16 +14,15 @@ class MainRequestLog {
   MainRequestLog();
 
   Future authentification() async {
-    var token = await getToken();
+    var token = await box.read("token");
     try {
       var reponse = await dio.get(uri_config + uri_step["auth"] + token!);
+      logCtrl.getUserName(reponse.data["user_name"]);
+      print("BIEN AUTHENTIFIEE");
       navSys.navIn("pageGestion");
-      print("AFFICHE ----- DATA AUTHENTIFICATION -----");
-      print(reponse.data);
-      //loadSplashCtrl.updateLoad("loadOk");
     } catch (e) {
+      print("NON AUTHENTIFIEE");
       navSys.navIn("pageLogin");
-      // loadSplashCtrl.updateLoad("loadNotOk");
     }
   }
 
@@ -31,14 +30,11 @@ class MainRequestLog {
     try {
       var reponse = await dio.post(uri_config + uri_step['connexion'],
           data: {"email": email, "password": motDePasse});
-      List dataLoginSuccess = [
-        reponse.data["user_name"],
-        reponse.data["token"]
-      ];
-      writeIdInLocal(dataLoginSuccess[1], dataLoginSuccess[0]);
+      String userName = reponse.data["user_name"];
+      String token = reponse.data["token"];
+      box.write("user_name", userName);
+      box.write("token", token);
       navSys.navIn("pageGestion");
-    } catch (e) {
-      print(e);
-    }
+    } catch (e) {}
   }
 }
