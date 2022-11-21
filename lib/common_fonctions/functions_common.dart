@@ -7,6 +7,15 @@ import 'package:stoolz/pages_views/page_gestion_materiels/main_gestion_materiels
 List<String> loaderState = ["loading", "loadOk", "loadNotOk"];
 
 final box = GetStorage();
+
+void writeToken(String tokenId) async {
+  await box.write('token', tokenId);
+}
+
+void writeId(String userName) async {
+  await box.write('user_name', userName);
+}
+
 const String uri_config = 'https://app-backend-matos.herokuapp.com/';
 
 Map<dynamic, dynamic> uri_step = {

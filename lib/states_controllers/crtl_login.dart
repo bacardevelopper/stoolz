@@ -7,7 +7,7 @@ var reqLog = new MainRequestLog();
 class LoginCtrl extends GetxController {
   String email = '';
   String password = '';
-  String userName = '';
+  var userName = '';
 
   getUserName(String userNameArg) {
     userName = userNameArg;
