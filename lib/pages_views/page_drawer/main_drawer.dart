@@ -1,0 +1,44 @@
+// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors
+import 'package:flutter/material.dart';
+
+class DrawerView extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Drawer(
+      backgroundColor: Colors.yellow,
+      child: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            btnFonction("Disponible", 1),
+            btnFonction("Supprimer", 2),
+            btnFonction("Indisponible", 3),
+            btnFonction("Déplacer", 4),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget btnFonction(String nameArg, int dataArg) {
+    return Padding(
+      padding: EdgeInsets.all(10.0),
+      child: InkWell(
+        onTap: () {},
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              nameArg,
+              style: TextStyle(
+                color: Colors.black,
+                fontWeight: FontWeight.bold,
+                fontSize: 29.0,
+              ),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}

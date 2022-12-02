@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, must_be_immutable
+// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors, must_be_immutable, prefer_const_literals_to_create_immutables
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:stoolz/states_controllers/crtl_login.dart';
@@ -8,7 +8,7 @@ class MyAppBarGestion extends AppBar {
   bool? affiche;
   MyAppBarGestion({this.titre, required this.affiche})
       : super(
-          title: colInfos('BACAR Darwin', "Conseiller num"),
+          title: colInfos(),
           backgroundColor: Colors.black,
           leading: Icon(
             Icons.account_circle_rounded,
@@ -20,34 +20,36 @@ class MyAppBarGestion extends AppBar {
         );
 }
 
-Widget colInfos(String nom, String poste) {
+Widget colInfos() {
   return GetBuilder<LoginCtrl>(
     init: LoginCtrl(),
-    builder: (value) => Column(
-      children: [
-        Row(
-          children: [
-            Text(
-              value.userName,
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 16.0,
+    builder: (data) {
+      return Column(
+        children: [
+          Row(
+            children: [
+              Text(
+                data.userName,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 16.0,
+                ),
+              )
+            ],
+          ),
+          Row(
+            children: [
+              Text(
+                "poste",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 13.0,
+                ),
               ),
-            )
-          ],
-        ),
-        Row(
-          children: [
-            Text(
-              poste,
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 13.0,
-              ),
-            ),
-          ],
-        ),
-      ],
-    ),
+            ],
+          ),
+        ],
+      );
+    },
   );
 }

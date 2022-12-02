@@ -7,10 +7,12 @@ var reqLog = new MainRequestLog();
 class LoginCtrl extends GetxController {
   String email = '';
   String password = '';
-  var userName = '';
+  String userName = "";
+  bool loadOrNot = false;
 
-  getUserName(String userNameArg) {
+  getUserName(String userNameArg, bool load) {
     userName = userNameArg;
+    loadOrNot = load;
     update();
   }
 

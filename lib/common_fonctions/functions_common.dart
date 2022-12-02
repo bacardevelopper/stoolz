@@ -3,6 +3,7 @@ import 'package:get_storage/get_storage.dart';
 import 'package:get/get.dart';
 import 'package:stoolz/pages_views/page_connexion/main_connexion.dart';
 import 'package:stoolz/pages_views/page_gestion_materiels/main_gestion_materiels.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 List<String> loaderState = ["loading", "loadOk", "loadNotOk"];
 
@@ -16,7 +17,7 @@ void writeId(String userName) async {
   await box.write('user_name', userName);
 }
 
-const String uri_config = 'https://app-backend-matos.herokuapp.com/';
+String? uri_config = dotenv.env['DOMAINE_LOCAL'];
 
 Map<dynamic, dynamic> uri_step = {
   'create': 'crud/create',
@@ -32,7 +33,7 @@ class NavigationSys {
   void navIn(String pathArg) {
     switch (pathArg) {
       case 'pageGestion':
-        Get.to(() => PageGestion());
+        Get.to(() => GestionViewCaller());
         break;
       case 'pageLogin':
         Get.to(() => PageConnexion());

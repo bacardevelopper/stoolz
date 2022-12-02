@@ -4,9 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:stoolz/pages_views/splash_load/main_splash_load.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:stoolz/request/main_request_log.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 void main() async {
   await GetStorage.init();
+  await dotenv.load(fileName: ".env");
   runApp(MyApp());
 }
 
