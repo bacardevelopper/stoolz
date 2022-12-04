@@ -10,10 +10,10 @@ class DrawerView extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            btnFonction("Disponible", 1),
-            btnFonction("Supprimer", 2),
-            btnFonction("Indisponible", 3),
-            btnFonction("Déplacer", 4),
+            btnFonction("DISPONIBLE", 1),
+            btnFonction("SUPPRIMER", 2),
+            btnFonction("INDISPONIBLE", 3),
+            btnFonction("DEPLACER", 4),
           ],
         ),
       ),
@@ -22,7 +22,7 @@ class DrawerView extends StatelessWidget {
 
   Widget btnFonction(String nameArg, int dataArg) {
     return Padding(
-      padding: EdgeInsets.all(10.0),
+      padding: EdgeInsets.all(11.0),
       child: InkWell(
         onTap: () {},
         child: Row(

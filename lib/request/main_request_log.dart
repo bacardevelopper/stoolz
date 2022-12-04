@@ -1,4 +1,4 @@
-// ignore_for_file: unnecessary_new, unused_local_variable
+// ignore_for_file: unnecessary_new, unused_local_variable, empty_catches
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
 import 'package:stoolz/common_fonctions/functions_common.dart';
