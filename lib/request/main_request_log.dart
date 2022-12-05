@@ -17,6 +17,7 @@ class MainRequestLog {
   MainRequestLog();
 
   Future authentification() async {
+    print("lancement de l'auhtentification -------");
     var token = await box.read("token");
 
     try {
