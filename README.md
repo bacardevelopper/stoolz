@@ -3,6 +3,9 @@ Une application pour gerer le materiel du parc informatique de la cité des mét
 ## cloner le projet en local
 ```
 git clone https://github.com/bacardevelopper/stoolz.git
+
+# reinstaller les packages
+flutter pub get
 ```
 
 ## Créer variable .env dans la racine de votre projet

@@ -11,23 +11,29 @@ class ViewMateriel extends StatelessWidget {
   Widget build(BuildContext context) {
     var widthVar = MediaQuery.of(context).size.width / 1.05;
     // --- le build
-    return Center(
-      child: SizedBox(
-        width: widthVar,
-        height: 100.0,
-        child: Container(
-          decoration: BoxDecoration(
-            borderRadius: radiusVar,
-            color: Colors.white,
+    return Padding(
+      padding: EdgeInsets.fromLTRB(0, 7, 0, 7),
+      child: InkWell(
+        child: Center(
+          child: SizedBox(
+            width: widthVar,
+            height: 100.0,
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: radiusVar,
+                color: Colors.white,
+              ),
+              child: rowOfWidget(data),
+            ),
           ),
-          child: rowOfWidget(data),
         ),
+        onTap: () {},
       ),
     );
   }
 
   double sizeSideBox = 150.0;
-  
+
   Widget rowOfWidget(Map data) {
     return Padding(
       padding: const EdgeInsets.all(8),

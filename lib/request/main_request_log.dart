@@ -4,9 +4,7 @@ import 'package:get/get.dart';
 import 'package:stoolz/common_fonctions/functions_common.dart';
 import 'package:stoolz/states_controllers/crtl_login.dart';
 import 'package:stoolz/states_controllers/ctrl_splash.dart';
-import 'package:get_storage/get_storage.dart';
 
-final box = GetStorage();
 var dio = new Dio();
 var navSys = new NavigationSys();
 
