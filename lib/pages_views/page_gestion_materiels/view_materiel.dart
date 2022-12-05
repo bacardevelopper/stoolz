@@ -27,6 +27,7 @@ class ViewMateriel extends StatelessWidget {
   }
 
   double sizeSideBox = 150.0;
+  
   Widget rowOfWidget(Map data) {
     return Padding(
       padding: const EdgeInsets.all(8),

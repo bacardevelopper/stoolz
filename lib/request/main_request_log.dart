@@ -23,7 +23,9 @@ class MainRequestLog {
       var reponse = await dio.get(uri_config! + uri_step["auth"] + token!);
       Map? reponseMap = reponse.data;
       navSys.navIn("pageGestion");
+      print(reponse.data);
     } catch (e) {
+      print(e);
       navSys.navIn("pageLogin");
     }
   }
@@ -40,13 +42,17 @@ class MainRequestLog {
   }
 
   Future loginRequest(String email, String motDePasse) async {
+    print("FONCTION LOGIN LANCER ------ ------ ------");
     try {
       var reponse = await dio.post(uri_config! + uri_step['connexion'],
           data: {"email": email, "password": motDePasse});
       String userName = reponse.data["user_name"];
       String token = reponse.data["token"];
       writeToken(token);
+      print(reponse);
       navSys.navIn("pageGestion");
-    } catch (e) {}
+    } catch (e) {
+      print(e);
+    }
   }
 }
