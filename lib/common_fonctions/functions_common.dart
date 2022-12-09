@@ -23,7 +23,7 @@ Map<dynamic, dynamic> uri_step = {
   'create': 'crud/create',
   'read_all': 'crud/read-all/',
   'connexion': 'log/login',
-  'auth': 'crud/read-all/',
+  'auth': 'crud/auth/',
   'read_item': 'crud/read-item/'
 };
 

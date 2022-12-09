@@ -10,9 +10,10 @@ flutter pub get
 
 ## Créer variable .env dans la racine de votre projet
 
-Trouver votre IP local et remplacer insérer le ci-dessous
+Trouver votre IP local et insérer le ci-dessous
 
 ```
-DOMAINE_LOCAL = "http://votre_ip.100:8080/"
+DOMAINE_LOCAL = "http://votre_ip:8080/"
+DOMAINE_ONLINE = "http://url.truc/"
 ```
 
