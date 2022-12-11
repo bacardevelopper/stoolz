@@ -2,7 +2,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:stoolz/common_widgets/load_animation.dart';
+import 'package:stoolz/common_widgets/loader_anim.dart';
 import 'package:stoolz/pages_views/page_gestion_materiels/view_materiel.dart';
 import 'package:stoolz/request/main_request_crud.dart';
 import 'package:stoolz/states_controllers/ctrl_gestionMatos.dart';
@@ -17,13 +17,14 @@ class ScrollMateriels extends StatelessWidget {
     return feedMateriels();
   }
 
+// ScrollMateriels() or LoaderAnim()
   Widget feedMateriels() {
     return GetBuilder(
       init: GestionMatosCtrl(),
       builder: (value) {
         if (value.getAllMatosLoad == false) {
           return Center(
-            child: animatedLogo(),
+            child: LoaderAnim(),
           );
         } else {
           return ListView.builder(
