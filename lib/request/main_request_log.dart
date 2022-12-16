@@ -22,7 +22,7 @@ class MainRequestLog {
       var reponse = await dio.get(uri_config! + uri_step["auth"] + token!);
       Map? reponseMap = reponse.data;
       navSys.navIn("pageGestion");
-      print(reponse.data);
+      print(reponse);
     } catch (e) {
       print(e);
       navSys.navIn("pageLogin");
@@ -36,7 +36,8 @@ class MainRequestLog {
       var reponse = await dio.get(uri_config! + uri_step["auth"] + token);
       Map? reponseMap = reponse.data;
       String? userName = reponse.data["userNameRes"].toString();
-      logCtrl.getUserName(userName, true);
+      String? userPoste = reponse.data["poste"].toString();
+      logCtrl.getUserName(userName, userPoste, true);
     } catch (e) {}
   }
 

@@ -16,7 +16,7 @@ class MainRequestCrud {
     try {
       var reponse = await dio.get(uri_config! + uri_step["read_all"] + token!);
       Map? reponseMap = reponse.data;
-      gestionCtrl.updGetAllMatos();
+      gestionCtrl.updGetAllMatos(reponseMap!['doc']);
     } catch (e) {
       print(e);
     }

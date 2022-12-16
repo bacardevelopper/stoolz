@@ -34,13 +34,13 @@ Widget colInfos() {
                   color: Colors.white,
                   fontSize: 16.0,
                 ),
-              )
+              ),
             ],
           ),
           Row(
             children: [
               Text(
-                "poste",
+                data.poste,
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 13.0,

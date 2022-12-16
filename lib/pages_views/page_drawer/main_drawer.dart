@@ -14,6 +14,7 @@ class DrawerView extends StatelessWidget {
             btnFonction("SUPPRIMER", 2),
             btnFonction("INDISPONIBLE", 3),
             btnFonction("DEPLACER", 4),
+            scanQrbtn(),
           ],
         ),
       ),
@@ -38,6 +39,17 @@ class DrawerView extends StatelessWidget {
             )
           ],
         ),
+      ),
+    );
+  }
+
+  Widget scanQrbtn() {
+    return IconButton(
+      onPressed: () {},
+      icon: Icon(
+        Icons.qr_code_scanner_rounded,
+        size: 49.0,
+        color: Colors.black,
       ),
     );
   }
