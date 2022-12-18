@@ -6,6 +6,7 @@ import 'package:stoolz/states_controllers/crtl_login.dart';
 class MyAppBarGestion extends AppBar {
   String? titre;
   bool? affiche;
+ 
   MyAppBarGestion({this.titre, required this.affiche})
       : super(
           title: colInfos(),

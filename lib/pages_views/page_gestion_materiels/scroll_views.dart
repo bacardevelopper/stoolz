@@ -5,6 +5,7 @@ import 'package:stoolz/common_widgets/loader_anim.dart';
 import 'package:stoolz/pages_views/page_gestion_materiels/view_materiel.dart';
 import 'package:stoolz/request/main_request_crud.dart';
 import 'package:stoolz/states_controllers/ctrl_gestionMatos.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 // --
 
 class ScrollMateriels extends StatelessWidget {
@@ -13,11 +14,11 @@ class ScrollMateriels extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     reqGestion.getAllMateriels();
-    return feedMateriels();
+    return feedMateriels(context);
   }
 
 // ScrollMateriels() or LoaderAnim()
-  Widget feedMateriels() {
+  Widget feedMateriels(BuildContext context) {
     return GetBuilder(
       init: GestionMatosCtrl(),
       builder: (value) {
@@ -27,13 +28,38 @@ class ScrollMateriels extends StatelessWidget {
           );
         } else {
           return ListView.builder(
-            itemCount: 20,
+            itemCount: value.sizeListe,
             itemBuilder: (BuildContext context, int index) {
-              return ViewMateriel(data: dataRes);
+              return slidableView(index, value.listeMateriels[index], context);
             },
           );
         }
       },
     );
   }
+
+  Widget slidableView(int index, Map data, BuildContext context) {
+    return Slidable(
+      key: ValueKey(index),
+      startActionPane: ActionPane(
+        motion: const ScrollMotion(),
+        children: [
+          SlidableAction(
+            onPressed: supprimerMatos(context, index),
+            backgroundColor: Color(0xFFFE4A49),
+            foregroundColor: Colors.white,
+            icon: Icons.delete,
+            label: 'supprimer',
+          ),
+        ],
+      ),
+      child: ViewMateriel(
+        data: data,
+      ),
+    );
+  }
+
+  supprimerMatos(BuildContext context, int id) {}
 }
+
+// ViewMateriel(data: value.listeMateriels[index])

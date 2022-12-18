@@ -1,8 +1,6 @@
 // ignore_for_file: must_be_immutable, prefer_const_literals_to_create_immutables, prefer_const_constructors
 import 'package:flutter/material.dart';
 
-Map dataRes = {};
-
 class ViewMateriel extends StatelessWidget {
   ViewMateriel({Key? key, required this.data}) : super(key: key);
   Map data;
@@ -68,12 +66,11 @@ class ViewMateriel extends StatelessWidget {
 
   Column clmOfData(Map data) {
     return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        textOfTitle("PC portable 05"),
-        positionArg("Ongojou"),
-        textOfPres("disponible"),
-        textOfPres("darwin"),
+        textOfTitle(data['nom']),
+        positionArg(data['lieu'], true),
+        positionArg(data['avis'], false),
       ],
     );
   }
@@ -90,7 +87,7 @@ class ViewMateriel extends StatelessWidget {
             style: TextStyle(
               color: Colors.black,
               fontWeight: FontWeight.bold,
-              fontSize: 15.0,
+              fontSize: 18.0,
             ),
           )
         ],
@@ -110,7 +107,7 @@ class ViewMateriel extends StatelessWidget {
             style: TextStyle(
               color: Colors.black,
               fontWeight: FontWeight.normal,
-              fontSize: 13.0,
+              fontSize: 15.0,
             ),
           )
         ],
@@ -118,7 +115,7 @@ class ViewMateriel extends StatelessWidget {
     );
   }
 
-  Widget positionArg(String data) {
+  Widget positionArg(String data, bool afficheIcon) {
     return SizedBox(
       width: sizeSideBox,
       child: Row(
@@ -133,10 +130,12 @@ class ViewMateriel extends StatelessWidget {
               fontSize: 13.0,
             ),
           ),
-          Icon(
-            Icons.location_on,
-            size: 18.0,
-          )
+          (afficheIcon)
+              ? Icon(
+                  Icons.location_on,
+                  size: 18.0,
+                )
+              : Container()
         ],
       ),
     );
