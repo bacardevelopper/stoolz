@@ -1,10 +1,16 @@
 // ignore_for_file: must_be_immutable, prefer_const_literals_to_create_immutables, prefer_const_constructors
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:stoolz/states_controllers/ctrl_gestionMatos.dart';
 
 class ViewMateriel extends StatelessWidget {
-  ViewMateriel({Key? key, required this.data}) : super(key: key);
+  ViewMateriel({Key? key, required this.data, required this.index})
+      : super(key: key);
   Map data;
+  int index;
   var radiusVar = BorderRadius.circular(14);
+  final ctrlGestion = Get.put(GestionMatosCtrl());
+
   @override
   Widget build(BuildContext context) {
     var widthVar = MediaQuery.of(context).size.width / 1.05;
@@ -21,7 +27,7 @@ class ViewMateriel extends StatelessWidget {
                 borderRadius: radiusVar,
                 color: Colors.white,
               ),
-              child: rowOfWidget(data),
+              child: rowOfWidget(data, index),
             ),
           ),
         ),
@@ -32,7 +38,7 @@ class ViewMateriel extends StatelessWidget {
 
   double sizeSideBox = 150.0;
 
-  Widget rowOfWidget(Map data) {
+  Widget rowOfWidget(Map data, int index) {
     return Padding(
       padding: const EdgeInsets.all(8),
       child: Row(
@@ -40,7 +46,7 @@ class ViewMateriel extends StatelessWidget {
         children: [
           iconRow(data),
           clmOfData(data),
-          checkBox(true, 0),
+          checkBox(data["check"], index),
         ],
       ),
     );
@@ -142,15 +148,22 @@ class ViewMateriel extends StatelessWidget {
   }
 
   Widget checkBox(bool data, int index) {
-    return Checkbox(
-      checkColor: Colors.white,
-      activeColor: Colors.black,
-      value: data,
-      side: BorderSide(color: Colors.white, width: 5),
-      onChanged: (bool? value) {},
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(5),
-      ),
+    return GetBuilder<GestionMatosCtrl>(
+      init: GestionMatosCtrl(),
+      builder: (value) {
+        return Checkbox(
+          checkColor: Colors.white,
+          activeColor: Colors.black,
+          value: data,
+          side: BorderSide(color: Colors.black, width: 1),
+          onChanged: (bool? value) {
+            ctrlGestion.checkOrnot(index);
+          },
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(5),
+          ),
+        );
+      },
     );
   }
 }

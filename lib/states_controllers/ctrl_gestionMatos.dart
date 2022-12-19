@@ -9,13 +9,14 @@ class GestionMatosCtrl extends GetxController {
 
   void updGetAllMatos(List listeMatos) {
     listeMateriels = listeMatos;
-
-    sizeListe = listeMateriels.length;
-    for (int index = 0; index < listeMatos.length; index++) {
+    sizeListe = listeMatos.length;
+    print("SIZE =====> $sizeListe");
+    for (int index = 0; index < sizeListe; index++) {
       listeWithCheck.add({
         '_id': listeMateriels[index]['_id'],
         'nom': listeMateriels[index]['nom'],
         'lieu': listeMateriels[index]['lieu'],
+        'avis': listeMateriels[index]['avis'],
         'disponible': listeMateriels[index]['disponible'],
         'check': false,
       });
@@ -25,17 +26,20 @@ class GestionMatosCtrl extends GetxController {
     print(listeWithCheck);
   }
 
-/*
+  deleteMat(int index) {
+    listeWithCheck.removeAt(index);
+    update();
+  }
+
   checkOrnot(int indexArg) {
-    bool check = listeMateriels[indexArg]['disponible'];
+    bool check = listeWithCheck[indexArg]['check'];
 
     if (check) {
-      listeMateriels[indexArg]['disponible'] = false;
+      listeWithCheck[indexArg]['check'] = false;
       update();
     } else {
-      listeMateriels[indexArg]['disponible'] = true;
+      listeWithCheck[indexArg]['check'] = true;
       update();
     }
   }
-  */
 }

@@ -2,7 +2,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:stoolz/common_widgets/load_animation.dart';
-import 'package:stoolz/common_widgets/loader_anim.dart';
 import 'package:stoolz/pages_views/app_bar_views/app_bar.dart';
 import 'package:stoolz/pages_views/page_drawer/main_drawer.dart';
 import 'package:stoolz/pages_views/page_gestion_materiels/scroll_views.dart';
@@ -32,7 +31,7 @@ class PageGestion extends StatelessWidget {
                 affiche: false,
               ),
               backgroundColor: Colors.black,
-              body: ScrollMateriels(),
+              body: ScrollMatCaller(),
             ),
           );
         } else {
