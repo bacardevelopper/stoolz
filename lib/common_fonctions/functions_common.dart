@@ -22,6 +22,7 @@ String? uri_config = dotenv.env['DOMAINE_LOCAL'];
 Map<dynamic, dynamic> uri_step = {
   'create': 'crud/create',
   'read_all': 'crud/read-all/',
+  'delete_one': 'crud/delete/',
   'connexion': 'log/login',
   'auth': 'crud/auth/',
   'read_item': 'crud/read-item/'

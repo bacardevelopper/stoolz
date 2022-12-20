@@ -1,4 +1,4 @@
-// ignore_for_file: unused_local_variable
+// ignore_for_file: unused_local_variable, unnecessary_new, avoid_print, prefer_interpolation_to_compose_strings
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
 import 'package:stoolz/states_controllers/ctrl_gestionMatos.dart';
@@ -12,11 +12,23 @@ class MainRequestCrud {
 
   Future getAllMateriels() async {
     var token = await box.read("token");
-    print("get all materiels ------ ");
     try {
       var reponse = await dio.get(uri_config! + uri_step["read_all"] + token!);
       Map? reponseMap = reponse.data;
       gestionCtrl.updGetAllMatos(reponseMap!['doc']);
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  Future deleteOneMat(String id) async {
+    var token = await box.read("token");
+    var idAndToken = id + '/' + token;
+    try {
+      var reponse =
+          await dio.get(uri_config! + uri_step["delete_one"] + idAndToken);
+      Map? reponseMap = reponse.data;
+      print(reponseMap);
     } catch (e) {
       print(e);
     }

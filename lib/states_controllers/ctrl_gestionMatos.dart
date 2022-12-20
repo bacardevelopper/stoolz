@@ -1,5 +1,8 @@
 // ignore_for_file: unnecessary_new
 import 'package:get/get.dart';
+import 'package:stoolz/request/main_request_crud.dart';
+
+var reqCrud = new MainRequestCrud();
 
 class GestionMatosCtrl extends GetxController {
   bool getAllMatosLoad = false;
@@ -27,6 +30,7 @@ class GestionMatosCtrl extends GetxController {
   }
 
   deleteMat(int index) {
+    reqCrud.deleteOneMat(listeWithCheck[index]["_id"]);
     listeWithCheck.removeAt(index);
     update();
   }
