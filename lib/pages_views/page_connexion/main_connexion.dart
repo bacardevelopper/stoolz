@@ -1,5 +1,6 @@
 // ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors
 import 'package:flutter/material.dart';
+import 'package:stoolz/common_widgets/input_widgets.dart';
 import 'package:stoolz/common_widgets/widget_button.dart';
 import 'package:stoolz/pages_views/page_connexion/widgets_for_connexion.dart';
 

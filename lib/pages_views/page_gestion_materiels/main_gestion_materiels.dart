@@ -3,10 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:stoolz/common_widgets/load_animation.dart';
 import 'package:stoolz/pages_views/app_bar_views/app_bar.dart';
+import 'package:stoolz/pages_views/page_add_materiel/main_page_add.dart';
 import 'package:stoolz/pages_views/page_drawer/main_drawer.dart';
+import 'package:stoolz/pages_views/page_gestion_materiels/bottom_navigation.dart';
 import 'package:stoolz/pages_views/page_gestion_materiels/scroll_views.dart';
 import 'package:stoolz/request/main_request_log.dart';
 import 'package:stoolz/states_controllers/crtl_login.dart';
+import 'package:stoolz/states_controllers/ctrl_gestionMatos.dart';
 
 final controller = Get.put(LoginCtrl());
 final reqLog = new MainRequestLog();
@@ -31,7 +34,17 @@ class PageGestion extends StatelessWidget {
                 affiche: false,
               ),
               backgroundColor: Colors.black,
-              body: ScrollMatCaller(),
+              body: GetBuilder<GestionMatosCtrl>(
+                init: GestionMatosCtrl(),
+                builder: ((val) {
+                  if (val.bottomNavInd == 0) {
+                    return ScrollMatCaller();
+                  } else {
+                    return PageAjout();
+                  }
+                }),
+              ),
+              bottomNavigationBar: BottomNav(),
             ),
           );
         } else {

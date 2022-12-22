@@ -2,33 +2,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_fast_forms/flutter_fast_forms.dart';
 import 'package:get/get.dart';
+import 'package:stoolz/common_widgets/input_widgets.dart';
 import 'package:stoolz/pages_views/show_notif/notification.dart';
 import 'package:stoolz/states_controllers/crtl_login.dart';
 
 final ctrlLogin = Get.put(LoginCtrl());
-
-Widget espacerHeight(double hauteur) {
-  return Container(
-    height: hauteur,
-  );
-}
-
-Widget labelInput(String labelName) {
-  return Row(
-    children: [
-      Padding(
-        padding: EdgeInsets.fromLTRB(0, 4, 0, 5),
-        child: Text(
-          labelName,
-          style: TextStyle(
-            color: Colors.greenAccent,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-      )
-    ],
-  );
-}
 
 Widget inputText(String idf, String logId, double widthArg) {
   return SizedBox(
@@ -48,27 +26,6 @@ Widget inputText(String idf, String logId, double widthArg) {
           ),
         ),
       ],
-    ),
-  );
-}
-
-InputDecoration designInput() {
-  return InputDecoration(
-    filled: true,
-    fillColor: Colors.white,
-    enabledBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(10),
-      borderSide: BorderSide(
-        color: Colors.white,
-        width: 1.0,
-      ),
-    ),
-    focusedBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(10),
-      borderSide: BorderSide(
-        color: Colors.white,
-        width: 1.0,
-      ),
     ),
   );
 }

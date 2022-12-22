@@ -1,4 +1,4 @@
-// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, must_be_immutable, library_private_types_in_public_api
+// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, must_be_immutable, library_private_types_in_public_api, prefer_const_literals_to_create_immutables
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:stoolz/common_widgets/loader_anim.dart';
@@ -18,6 +18,7 @@ class ScrollMateriels extends StatelessWidget {
 
 // ScrollMateriels() or LoaderAnim()
   Widget feedMateriels(BuildContext context) {
+    double widthArg = MediaQuery.of(context).size.width / 1.5;
     return GetBuilder<GestionMatosCtrl>(
       init: GestionMatosCtrl(),
       builder: (value) {
@@ -26,14 +27,46 @@ class ScrollMateriels extends StatelessWidget {
             child: LoaderAnim(),
           );
         } else {
-          return ListView.builder(
-            itemCount: value.listeWithCheck.length,
-            itemBuilder: (BuildContext context, int index) {
-              return slidableView(index, value.listeWithCheck[index], context);
-            },
-          );
+          if (value.sizeListe == 0) {
+            return Center(
+              child: pasDeMatos(widthArg),
+            );
+          } else {
+            return ListView.builder(
+              itemCount: value.listeWithCheck.length,
+              itemBuilder: (BuildContext context, int index) {
+                return slidableView(
+                    index, value.listeWithCheck[index], context);
+              },
+            );
+          }
         }
       },
+    );
+  }
+
+  Widget pasDeMatos(double widthArg) {
+    return Container(
+      width: widthArg,
+      height: 45.0,
+      color: Colors.yellowAccent,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: <Widget>[
+          Icon(
+            Icons.dangerous_rounded,
+            color: Colors.black,
+          ),
+          Text(
+            "Pas de matériels",
+            style: TextStyle(
+              color: Colors.black,
+              fontWeight: FontWeight.bold,
+              fontSize: 20,
+            ),
+          )
+        ],
+      ),
     );
   }
 

@@ -9,6 +9,7 @@ class GestionMatosCtrl extends GetxController {
   List listeMateriels = [];
   List listeWithCheck = [];
   int sizeListe = 0;
+  int bottomNavInd = 0;
 
   void updGetAllMatos(List listeMatos) {
     listeMateriels = listeMatos;
@@ -45,5 +46,10 @@ class GestionMatosCtrl extends GetxController {
       listeWithCheck[indexArg]['check'] = true;
       update();
     }
+  }
+
+  bottomNavPage(int itemArg) {
+    bottomNavInd = itemArg;
+    update();
   }
 }
