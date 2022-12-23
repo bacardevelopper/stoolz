@@ -14,6 +14,7 @@ class GestionMatosCtrl extends GetxController {
   void updGetAllMatos(List listeMatos) {
     listeMateriels = listeMatos;
     sizeListe = listeMatos.length;
+
     print("SIZE =====> $sizeListe");
     for (int index = 0; index < sizeListe; index++) {
       listeWithCheck.add({
@@ -51,5 +52,23 @@ class GestionMatosCtrl extends GetxController {
   bottomNavPage(int itemArg) {
     bottomNavInd = itemArg;
     update();
+  }
+
+  String nomMateriel = '';
+  String nomAvis = '';
+  changeValue(String idValue, String value) {
+    if (idValue == "Matériel") {
+      nomMateriel = value;
+      update();
+    }
+    if (idValue == "Avis") {
+      nomAvis = value;
+      update();
+    }
+  }
+
+  addNewMateriel() {
+    reqCrud.addMateriel(nomMateriel, nomAvis);
+    print('| ---- $nomMateriel $nomAvis  ----|');
   }
 }

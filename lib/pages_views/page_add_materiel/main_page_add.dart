@@ -2,11 +2,15 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_fast_forms/flutter_fast_forms.dart';
+import 'package:get/get.dart';
 import 'package:stoolz/common_widgets/input_widgets.dart';
 import 'package:stoolz/pages_views/show_notif/notification.dart';
+import 'package:stoolz/states_controllers/ctrl_gestionMatos.dart';
 
 class PageAjout extends StatelessWidget {
-  const PageAjout({super.key});
+  PageAjout({super.key});
+
+  final ctrlPageAdd = Get.put(GestionMatosCtrl());
 
   @override
   Widget build(BuildContext context) {
@@ -35,9 +39,10 @@ class PageAjout extends StatelessWidget {
             name: 'field_destination',
             placeholder: idf,
             decoration: designInput(),
-            onChanged: (value) {},
+            onChanged: (value) {
+              ctrlPageAdd.changeValue(idf, value!);
+            },
             cursorColor: Colors.black,
-            // ignore: prefer_const_constructors
             style: TextStyle(
               color: Colors.black,
               fontWeight: FontWeight.bold,
@@ -51,6 +56,7 @@ class PageAjout extends StatelessWidget {
   Widget btnAddMat(double widthArg, BuildContext context) {
     return InkWell(
       onTap: () {
+        ctrlPageAdd.addNewMateriel();
         notificationMsg(context, "");
       },
       child: Container(

@@ -33,4 +33,16 @@ class MainRequestCrud {
       print(e);
     }
   }
+
+  Future addMateriel(String nom, String avis) async {
+    var token = await box.read("token");
+
+    try {
+      var reponse = await dio.post(uri_config! + uri_step["create"],
+          data: {"nom": nom, "avis": avis, "token": token});
+      print(reponse.data);
+    } catch (e) {
+      print(e);
+    }
+  }
 }
