@@ -1,5 +1,4 @@
 // ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
 import 'package:flutter_fast_forms/flutter_fast_forms.dart';
 import 'package:get/get.dart';
@@ -9,7 +8,6 @@ import 'package:stoolz/states_controllers/ctrl_gestionMatos.dart';
 
 class PageAjout extends StatelessWidget {
   PageAjout({super.key});
-
   final ctrlPageAdd = Get.put(GestionMatosCtrl());
 
   @override
