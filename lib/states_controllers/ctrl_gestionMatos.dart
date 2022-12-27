@@ -11,24 +11,29 @@ class GestionMatosCtrl extends GetxController {
   int sizeListe = 0;
   int bottomNavInd = 0;
 
+  List listeId = [];
+
   void updGetAllMatos(List listeMatos) {
     listeMateriels = listeMatos;
     sizeListe = listeMatos.length;
 
-    print("SIZE =====> $sizeListe");
-    for (int index = 0; index < sizeListe; index++) {
-      listeWithCheck.add({
-        '_id': listeMateriels[index]['_id'],
-        'nom': listeMateriels[index]['nom'],
-        'lieu': listeMateriels[index]['lieu'],
-        'avis': listeMateriels[index]['avis'],
-        'disponible': listeMateriels[index]['disponible'],
-        'check': false,
-      });
+    if (listeMatos.length != listeWithCheck.length) {
+      listeWithCheck = [];
+      for (int index = 0; index < sizeListe; index++) {
+        print(listeMateriels[index]);
+
+        listeWithCheck.add({
+          '_id': listeMateriels[index]['_id'],
+          'nom': listeMateriels[index]['nom'],
+          'lieu': listeMateriels[index]['lieu'],
+          'avis': listeMateriels[index]['avis'],
+          'disponible': listeMateriels[index]['disponible'],
+          'check': false,
+        });
+      }
     }
     getAllMatosLoad = true;
     update();
-    print(listeWithCheck);
   }
 
   deleteMat(int index) {
@@ -51,6 +56,7 @@ class GestionMatosCtrl extends GetxController {
 
   bottomNavPage(int itemArg) {
     bottomNavInd = itemArg;
+    if (itemArg == 0) {}
     update();
   }
 

@@ -25,26 +25,29 @@ class PageGestion extends StatelessWidget {
       init: LoginCtrl(),
       builder: (ctrlUserName) {
         if (ctrlUserName.loadOrNot) {
-          return WillPopScope(
-            onWillPop: _onWillPop,
-            child: Scaffold(
-              drawer: DrawerView(),
-              appBar: MyAppBarGestion(
-                titre: 'Bacar',
-                affiche: false,
+          return GestureDetector(
+            onTap: FocusScope.of(context).unfocus,
+            child: WillPopScope(
+              onWillPop: _onWillPop,
+              child: Scaffold(
+                drawer: DrawerView(),
+                appBar: MyAppBarGestion(
+                  titre: 'Bacar',
+                  affiche: false,
+                ),
+                backgroundColor: Colors.black,
+                body: GetBuilder<GestionMatosCtrl>(
+                  init: GestionMatosCtrl(),
+                  builder: ((val) {
+                    if (val.bottomNavInd == 0) {
+                      return ScrollMatCaller();
+                    } else {
+                      return PageAjout();
+                    }
+                  }),
+                ),
+                bottomNavigationBar: BottomNav(),
               ),
-              backgroundColor: Colors.black,
-              body: GetBuilder<GestionMatosCtrl>(
-                init: GestionMatosCtrl(),
-                builder: ((val) {
-                  if (val.bottomNavInd == 0) {
-                    return ScrollMatCaller();
-                  } else {
-                    return PageAjout();
-                  }
-                }),
-              ),
-              bottomNavigationBar: BottomNav(),
             ),
           );
         } else {
