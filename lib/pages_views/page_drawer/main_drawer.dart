@@ -1,5 +1,9 @@
 // ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:stoolz/states_controllers/ctrl_gestionMatos.dart';
+
+final gestionCtrl = Get.put(GestionMatosCtrl());
 
 class DrawerView extends StatelessWidget {
   @override
@@ -25,7 +29,11 @@ class DrawerView extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.all(11.0),
       child: InkWell(
-        onTap: () {},
+        onTap: () {
+          if (dataArg == 2) {
+            gestionCtrl.printListId();
+          }
+        },
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -36,7 +44,14 @@ class DrawerView extends StatelessWidget {
                 fontWeight: FontWeight.bold,
                 fontSize: 29.0,
               ),
-            )
+            ),
+            Container(
+              width: 12.0,
+            ),
+            Icon(
+              Icons.check_box_rounded,
+              color: Colors.black,
+            ),
           ],
         ),
       ),

@@ -11,8 +11,6 @@ class GestionMatosCtrl extends GetxController {
   int sizeListe = 0;
   int bottomNavInd = 0;
 
-  List listeId = [];
-
   void updGetAllMatos(List listeMatos) {
     listeMateriels = listeMatos;
     sizeListe = listeMatos.length;
@@ -34,6 +32,12 @@ class GestionMatosCtrl extends GetxController {
     }
     getAllMatosLoad = true;
     update();
+  }
+
+  printListId() {
+    listeWithCheck.forEach((elt) {
+      print(elt);
+    });
   }
 
   deleteMat(int index) {
