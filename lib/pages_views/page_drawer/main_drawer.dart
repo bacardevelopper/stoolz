@@ -31,7 +31,7 @@ class DrawerView extends StatelessWidget {
       child: InkWell(
         onTap: () {
           if (dataArg == 2) {
-            gestionCtrl.printListId();
+            gestionCtrl.deleteMany();
           }
         },
         child: Row(

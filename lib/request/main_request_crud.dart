@@ -13,7 +13,7 @@ class MainRequestCrud {
   MainRequestCrud();
 
   Future getAllMateriels() async {
-    var token = await box.read("token");
+    var token = await getStrToken();
     try {
       var reponse = await dio.get(uri_config! + uri_step["read_all"] + token!);
       Map? reponseMap = reponse.data;
@@ -24,7 +24,7 @@ class MainRequestCrud {
   }
 
   Future deleteOneMat(String id) async {
-    var token = await box.read("token");
+    var token = await getStrToken();
     var idAndToken = id + '/' + token;
     try {
       var reponse =
@@ -36,12 +36,19 @@ class MainRequestCrud {
     }
   }
 
-  Future deleteMany(List idliste) async {
-    print(idliste);
+  Future deleteMany(List idListe) async {
+    var token = await getStrToken();
+    try {
+      var reponse = await dio.post(uri_config! + uri_step["delete_many"],
+          data: {"token": token, "array": idListe});
+      print(reponse.data);
+    } catch (e) {
+      print(e);
+    }
   }
 
   Future addMateriel(String nom, String avis) async {
-    var token = await box.read("token");
+    var token = await getStrToken();
 
     try {
       var reponse = await dio.post(uri_config! + uri_step["create"],

@@ -16,10 +16,11 @@ class MainRequestLog {
 
   Future authentification() async {
     print("lancement de l'auhtentification -------");
-    var token = await box.read("token");
+
+    var token = await getStrToken();
 
     try {
-      var reponse = await dio.get(uri_config! + uri_step["auth"] + token!);
+      var reponse = await dio.get(uri_config! + uri_step["auth"] + token);
       Map? reponseMap = reponse.data;
       navSys.navIn("pageGestion");
       print(reponse);
@@ -30,7 +31,7 @@ class MainRequestLog {
   }
 
   Future reqGetUserName() async {
-    var token = await box.read("token");
+    var token = await getStrToken();
 
     try {
       var reponse = await dio.get(uri_config! + uri_step["auth"] + token);

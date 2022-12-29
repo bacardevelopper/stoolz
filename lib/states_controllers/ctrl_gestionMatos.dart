@@ -8,6 +8,7 @@ class GestionMatosCtrl extends GetxController {
   bool getAllMatosLoad = false;
   List listeMateriels = [];
   List listeWithCheck = [];
+  List listeSelection = [];
   int sizeListe = 0;
   int bottomNavInd = 0;
 
@@ -34,10 +35,14 @@ class GestionMatosCtrl extends GetxController {
     update();
   }
 
-  printListId() {
-    listeWithCheck.forEach((elt) {
-      print(elt);
-    });
+  deleteMany() {
+    for (var elt in listeWithCheck) {
+      if (elt['check'] == true) {
+        listeSelection.add(elt['_id']);
+      }
+    }
+    update();
+    reqCrud.deleteMany(listeSelection);
   }
 
   deleteMat(int index) {

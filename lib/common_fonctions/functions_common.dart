@@ -13,6 +13,11 @@ void writeToken(String tokenId) async {
   await box.write('token', tokenId);
 }
 
+Future getStrToken() async {
+  String token = await box.read("token");
+  return token;
+}
+
 void writeId(String userName) async {
   await box.write('user_name', userName);
 }
@@ -23,6 +28,7 @@ Map<dynamic, dynamic> uri_step = {
   'create': 'crud/create',
   'read_all': 'crud/read-all/',
   'delete_one': 'crud/delete/',
+  'delete_many': 'crud/delete-many',
   'connexion': 'log/login',
   'auth': 'crud/auth/',
   'read_item': 'crud/read-item/'
