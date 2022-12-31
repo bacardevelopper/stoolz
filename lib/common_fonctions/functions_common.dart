@@ -14,8 +14,12 @@ void writeToken(String tokenId) async {
 }
 
 Future getStrToken() async {
-  String token = await box.read("token");
-  return token;
+  try {
+    String token = box.read("token").toString();
+    return token;
+  } catch (e) {
+    return '';
+  }
 }
 
 void writeId(String userName) async {

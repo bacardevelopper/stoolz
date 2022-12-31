@@ -12,22 +12,30 @@ class PageConnexion extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double widthInput = MediaQuery.of(context).size.width / 1.1;
+    double heightMax = MediaQuery.of(context).size.height;
     return WillPopScope(
       onWillPop: _onWillPop,
       child: Scaffold(
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              logoApp(2.1),
-              textAfficher(),
-              espacerHeight(35.0),
-              inputText("email@email.fr", "Email", widthInput),
-              espacerHeight(25.0),
-              inputText("xxxxxxxxx", "Password", widthInput),
-              espacerHeight(40.0),
-              btnLogin(widthInput, context)
-            ],
+        body: SingleChildScrollView(
+          child: ConstrainedBox(
+            constraints: BoxConstraints(
+              minHeight: heightMax,
+            ),
+            child: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  logoApp(2.1),
+                  textAfficher(),
+                  espacerHeight(35.0),
+                  inputText("email@email.fr", "Email", widthInput),
+                  espacerHeight(25.0),
+                  inputText("xxxxxxxxx", "Password", widthInput),
+                  espacerHeight(40.0),
+                  btnLogin(widthInput, context)
+                ],
+              ),
+            ),
           ),
         ),
         backgroundColor: Colors.black,

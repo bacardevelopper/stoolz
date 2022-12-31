@@ -1,4 +1,4 @@
-// ignore_for_file: unused_local_variable, unnecessary_new, avoid_print, prefer_interpolation_to_compose_strings
+// ignore_for_file: unused_local_variable, unnecessary_new, avoid_print, prefer_interpolation_to_compose_strings, await_only_futures
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
 import 'package:stoolz/states_controllers/ctrl_animation.dart';
@@ -7,7 +7,6 @@ import '../common_fonctions/functions_common.dart';
 
 var dio = new Dio();
 final gestionCtrl = Get.put(GestionMatosCtrl());
-final animCtrl = Get.put(AnimationCtrl());
 
 class MainRequestCrud {
   MainRequestCrud();
@@ -49,7 +48,7 @@ class MainRequestCrud {
 
   Future addMateriel(String nom, String avis) async {
     var token = await getStrToken();
-
+    final animCtrl = await Get.put(AnimationCtrl());
     try {
       var reponse = await dio.post(uri_config! + uri_step["create"],
           data: {"nom": nom, "avis": avis, "token": token});

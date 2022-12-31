@@ -1,4 +1,5 @@
-// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors
+// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, prefer_const_constructors_in_immutables
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:stoolz/states_controllers/ctrl_gestionMatos.dart';
@@ -6,6 +7,8 @@ import 'package:stoolz/states_controllers/ctrl_gestionMatos.dart';
 final gestionCtrl = Get.put(GestionMatosCtrl());
 
 class DrawerView extends StatelessWidget {
+  DrawerView({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -14,10 +17,10 @@ class DrawerView extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            btnFonction("DISPONIBLE", 1),
-            btnFonction("SUPPRIMER", 2),
-            btnFonction("INDISPONIBLE", 3),
-            btnFonction("DEPLACER", 4),
+            btnFonction("DISPONIBLE", 1, context),
+            btnFonction("SUPPRIMER", 2, context),
+            btnFonction("INDISPONIBLE", 3, context),
+            btnFonction("DEPLACER", 4, context),
             scanQrbtn(),
           ],
         ),
@@ -25,13 +28,14 @@ class DrawerView extends StatelessWidget {
     );
   }
 
-  Widget btnFonction(String nameArg, int dataArg) {
+  Widget btnFonction(String nameArg, int dataArg, BuildContext context) {
     return Padding(
       padding: EdgeInsets.all(11.0),
       child: InkWell(
         onTap: () {
           if (dataArg == 2) {
             gestionCtrl.deleteMany();
+            Navigator.of(context).pop();
           }
         },
         child: Row(

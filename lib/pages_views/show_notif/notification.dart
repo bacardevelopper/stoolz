@@ -19,13 +19,15 @@ Future<void> notificationMsg(BuildContext context, String data) {
                   borderRadius: BorderRadius.circular(14),
                   color: Color.fromARGB(255, 0, 88, 46),
                 ),
-                height: 400.0,
+                height: 200.0,
                 width: 300.0,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     animatedLogo(),
-                    texteStatusMsg(),
+                    (ctrl.statusMsg)
+                        ? texteStatusMsg("Ajout reussit")
+                        : texteStatusMsg("Chargement"),
                     btnMsg(context),
                   ],
                 ),
@@ -45,6 +47,7 @@ Widget btnMsg(BuildContext context) {
         backgroundColor: MaterialStatePropertyAll<Color>(Colors.yellowAccent)),
     onPressed: () {
       Navigator.pop(context);
+      animCtrl.updReqAddMatos(false);
       animCtrl.updtWillBoolVar();
     },
     child: Icon(
@@ -55,29 +58,13 @@ Widget btnMsg(BuildContext context) {
   );
 }
 
-Widget texteStatusMsg() {
-  return GetBuilder<AnimationCtrl>(
-    init: AnimationCtrl(),
-    builder: (ctrl) {
-      if (ctrl.statusMsg) {
-        return Text(
-          "Ajout réussit",
-          style: TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
-            fontSize: 20.0,
-          ),
-        );
-      } else {
-        return Text(
-          "Chargement ...",
-          style: TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
-            fontSize: 20.0,
-          ),
-        );
-      }
-    },
+Widget texteStatusMsg(String data) {
+  return Text(
+    data,
+    style: TextStyle(
+      color: Colors.white,
+      fontWeight: FontWeight.bold,
+      fontSize: 20.0,
+    ),
   );
 }

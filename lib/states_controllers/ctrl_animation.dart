@@ -15,7 +15,8 @@ class AnimationCtrl extends GetxController {
   }
 
   updReqAddMatos(bool dataBool) {
-    statusMsg = true;
+    statusMsg = dataBool;
+    print('BOOLEAN : $statusMsg');
     update();
   }
 

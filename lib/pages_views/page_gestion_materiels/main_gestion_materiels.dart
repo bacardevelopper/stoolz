@@ -19,6 +19,8 @@ class PageGestion extends StatelessWidget {
     return false;
   }
 
+  final scaffoldKey = GlobalKey<ScaffoldState>();
+
   @override
   Widget build(BuildContext context) {
     return GetBuilder<LoginCtrl>(
@@ -30,6 +32,7 @@ class PageGestion extends StatelessWidget {
             child: WillPopScope(
               onWillPop: _onWillPop,
               child: Scaffold(
+                key: scaffoldKey,
                 drawer: DrawerView(),
                 appBar: MyAppBarGestion(
                   titre: 'Bacar',
