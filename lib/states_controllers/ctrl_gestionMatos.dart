@@ -10,6 +10,7 @@ class GestionMatosCtrl extends GetxController {
   List listeWithCheck = [];
   List listeSelection = [];
   int sizeListe = 0;
+  Map getMateriel = {};
   int bottomNavInd = 0;
 
   void updGetAllMatos(List listeMatos) {
@@ -85,5 +86,10 @@ class GestionMatosCtrl extends GetxController {
   addNewMateriel() {
     reqCrud.addMateriel(nomMateriel, nomAvis);
     print('| ---- $nomMateriel $nomAvis  ----|');
+  }
+
+  getMaosVoid(Map data) {
+    getMateriel = data;
+    update();
   }
 }

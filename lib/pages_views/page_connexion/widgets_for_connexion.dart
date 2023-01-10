@@ -1,7 +1,8 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, sized_box_for_whitespace
 import 'package:flutter/material.dart';
 import 'package:flutter_fast_forms/flutter_fast_forms.dart';
 import 'package:get/get.dart';
+
 import 'package:stoolz/common_widgets/input_widgets.dart';
 import 'package:stoolz/pages_views/show_notif/notification.dart';
 import 'package:stoolz/states_controllers/crtl_login.dart';
@@ -14,15 +15,18 @@ Widget inputText(String idf, String logId, double widthArg) {
     child: Column(
       children: [
         labelInput(logId),
-        FastTextField(
-          name: 'field_destination',
-          placeholder: idf,
-          decoration: designInput(),
-          onChanged: (value) => ctrlLogin.changeValue(logId, value!),
-          cursorColor: Colors.black,
-          style: TextStyle(
-            color: Colors.black,
-            fontWeight: FontWeight.bold,
+        Container(
+          height: 60.0,
+          child: FastTextField(
+            name: 'field_destination',
+            placeholder: idf,
+            decoration: designInput(),
+            onChanged: (value) => ctrlLogin.changeValue(logId, value!),
+            cursorColor: Colors.black,
+            style: TextStyle(
+              color: Colors.black,
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
       ],
@@ -37,7 +41,7 @@ Widget btnLogin(double widthArg, BuildContext context) {
       notificationMsg(context, "");
     },
     child: Container(
-      height: 60.0,
+      height: 55.0,
       width: widthArg,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8),

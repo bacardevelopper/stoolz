@@ -9,9 +9,9 @@ class PageConnexion extends StatelessWidget {
     return false;
   }
 
+  double widthMax = 320.0;
   @override
   Widget build(BuildContext context) {
-    double widthInput = MediaQuery.of(context).size.width / 1.1;
     double heightMax = MediaQuery.of(context).size.height;
     return WillPopScope(
       onWillPop: _onWillPop,
@@ -28,11 +28,11 @@ class PageConnexion extends StatelessWidget {
                   logoApp(2.1),
                   textAfficher(),
                   espacerHeight(35.0),
-                  inputText("email@email.fr", "Email", widthInput),
+                  inputText("email@email.fr", "Email", widthMax),
                   espacerHeight(25.0),
-                  inputText("xxxxxxxxx", "Password", widthInput),
+                  inputText("xxxxxxxxx", "Password", widthMax),
                   espacerHeight(40.0),
-                  btnLogin(widthInput, context)
+                  btnLogin(widthMax, context)
                 ],
               ),
             ),

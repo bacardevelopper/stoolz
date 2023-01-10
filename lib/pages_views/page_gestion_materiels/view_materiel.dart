@@ -1,7 +1,12 @@
-// ignore_for_file: must_be_immutable, prefer_const_literals_to_create_immutables, prefer_const_constructors
+// ignore_for_file: must_be_immutable, prefer_const_literals_to_create_immutables, prefer_const_constructors, unnecessary_new
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:stoolz/common_fonctions/functions_common.dart';
+import 'package:stoolz/request/main_request_crud.dart';
 import 'package:stoolz/states_controllers/ctrl_gestionMatos.dart';
+
+final navGestion = new NavigationSys();
+final reqCrud = new MainRequestCrud();
 
 class ViewMateriel extends StatelessWidget {
   ViewMateriel({Key? key, required this.data, required this.index})
@@ -25,7 +30,7 @@ class ViewMateriel extends StatelessWidget {
             child: Container(
               decoration: BoxDecoration(
                 borderRadius: radiusVar,
-                color: Colors.white,
+                color: (data["disponible"]) ? Colors.white : Colors.red,
               ),
               child: rowOfWidget(data, index),
             ),
@@ -53,20 +58,27 @@ class ViewMateriel extends StatelessWidget {
   }
 
   Widget iconRow(Map data) {
-    return Container(
-      height: 80,
-      width: 80,
-      decoration: BoxDecoration(
-        borderRadius: radiusVar,
-        color: Colors.black,
-      ),
-      child: const Center(
-        child: Icon(
-          Icons.laptop,
-          color: Colors.white,
-          size: 30,
+    return InkWell(
+      child: Container(
+        height: 80,
+        width: 80,
+        decoration: BoxDecoration(
+          borderRadius: radiusVar,
+          color: Colors.black,
+        ),
+        child: const Center(
+          child: Icon(
+            Icons.laptop,
+            color: Colors.white,
+            size: 30,
+          ),
         ),
       ),
+      onTap: () {
+        print(data["_id"]);
+        reqCrud.getMateriel(data["_id"]);
+        navGestion.navIn('pageMateriel');
+      },
     );
   }
 

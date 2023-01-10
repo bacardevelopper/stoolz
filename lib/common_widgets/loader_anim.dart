@@ -24,7 +24,7 @@ class LoaderAnim extends StatelessWidget {
 
   var widgetLoop = LoopAnimationBuilder<Color?>(
     // mandatory parameters
-    tween: ColorTween(begin: Colors.black, end: Colors.grey),
+    tween: ColorTween(begin: Colors.black, end: Colors.red),
     duration: const Duration(seconds: 5),
     builder: (context, value, child) {
       double widthArg = MediaQuery.of(context).size.width;

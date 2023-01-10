@@ -80,8 +80,8 @@ class ScrollMateriels extends StatelessWidget {
             onPressed: (context) {
               supprimerMatos(index);
             },
-            backgroundColor: Color(0xFFFE4A49),
-            foregroundColor: Colors.white,
+            backgroundColor: Colors.red,
+            foregroundColor: Colors.black,
             icon: Icons.delete,
             label: 'supprimer',
           ),

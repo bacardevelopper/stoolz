@@ -1,10 +1,12 @@
-// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, prefer_const_constructors_in_immutables
+// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, prefer_const_constructors_in_immutables, unnecessary_new
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:stoolz/common_fonctions/functions_common.dart';
 import 'package:stoolz/states_controllers/ctrl_gestionMatos.dart';
 
 final gestionCtrl = Get.put(GestionMatosCtrl());
+final navObject = new NavigationSys();
 
 class DrawerView extends StatelessWidget {
   DrawerView({super.key});
@@ -64,7 +66,9 @@ class DrawerView extends StatelessWidget {
 
   Widget scanQrbtn() {
     return IconButton(
-      onPressed: () {},
+      onPressed: () {
+        navObject.navIn("qrCodePage");
+      },
       icon: Icon(
         Icons.qr_code_scanner_rounded,
         size: 49.0,

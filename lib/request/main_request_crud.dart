@@ -49,11 +49,25 @@ class MainRequestCrud {
   Future addMateriel(String nom, String avis) async {
     var token = await getStrToken();
     final animCtrl = await Get.put(AnimationCtrl());
+
     try {
       var reponse = await dio.post(uri_config! + uri_step["create"],
           data: {"nom": nom, "avis": avis, "token": token});
       print(reponse.data);
       animCtrl.updReqAddMatos(true);
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  Future getMateriel(String idMateriel) async {
+    var token = await getStrToken();
+
+    try {
+      var reponse = await dio
+          .get(uri_config! + uri_step["read_item"] + '$idMateriel/$token');
+      print(reponse.data);
+      gestionCtrl.getMaosVoid(reponse.data);
     } catch (e) {
       print(e);
     }
